@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const roles = [
     'Computer Science Student @ COMSATS',
     'Python & FastAPI Backend Developer',
+    'React & React Native Developer',
     'Frontend Developer (HTML, CSS, JS, Bootstrap)',
     'PostgreSQL & API Integrator',
     'C++ & Java Programmer'
@@ -158,8 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const selectedFilter = btn.getAttribute('data-filter');
 
       projectCards.forEach((card) => {
-        const cardCat = card.getAttribute('data-category');
-        if (selectedFilter === 'all' || cardCat === selectedFilter) {
+        const cardCat = (card.getAttribute('data-category') || '').trim().split(/\s+/);
+        if (selectedFilter === 'all' || cardCat.includes(selectedFilter)) {
           card.classList.remove('hidden');
           card.style.animation = 'fadeIn 0.4s ease forwards';
         } else {
